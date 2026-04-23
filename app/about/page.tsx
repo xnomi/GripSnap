@@ -40,7 +40,7 @@ export default function AboutPage() {
             </div>
             <div>
               <h3 className="text-text font-semibold text-lg flex items-center gap-2"><span className="text-accent">💸</span> 100% Free</h3>
-              <p className="text-sm mt-2">No premium tiers, no credit cards, no "unlock for high resolution." Every feature is available to everyone, always.</p>
+              <p className="text-sm mt-2">No premium tiers, no credit cards, no &quot;unlock for high resolution.&quot; Every feature is available to everyone, always.</p>
             </div>
             <div>
               <h3 className="text-text font-semibold text-lg flex items-center gap-2"><span className="text-accent">🤖</span> AI Powered</h3>

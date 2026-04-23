@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       <section className="space-y-6 text-muted leading-relaxed">
         <h2 className="text-text font-semibold text-2xl mt-8 mb-4">1. Introduction</h2>
         <p>
-          Welcome to GridSnap ("we", "our", or "us"). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, and what rights you have in relation to it.
+          Welcome to GridSnap (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;). We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains what information we collect, how we use it, and what rights you have in relation to it.
         </p>
 
         <h2 className="text-text font-semibold text-2xl mt-8 mb-4">2. Information We Do Not Collect</h2>
@@ -47,7 +47,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-text font-semibold text-2xl mt-8 mb-4">6. Changes to This Privacy Policy</h2>
         <p>
-          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes.
+          We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date. You are advised to review this Privacy Policy periodically for any changes.
         </p>
 
         <h2 className="text-text font-semibold text-2xl mt-8 mb-4">7. Contact Us</h2>
