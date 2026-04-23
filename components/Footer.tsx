@@ -10,8 +10,8 @@ export default function Footer() {
             <span className="text-muted text-sm">© {new Date().getFullYear()}</span>
           </div>
           <div className="flex gap-6 text-sm text-muted">
-            <Link href="/" className="hover:text-text transition-colors">Privacy</Link>
-            <Link href="/" className="hover:text-text transition-colors">About</Link>
+            <Link href="/privacy" className="hover:text-text transition-colors">Privacy</Link>
+            <Link href="/about" className="hover:text-text transition-colors">About</Link>
             <Link href="/" className="hover:text-text transition-colors">Tools</Link>
             <Link href="/" className="hover:text-text transition-colors">Creator Resources</Link>
           </div>
