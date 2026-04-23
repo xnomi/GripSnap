@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import PlatformTabs from '@/components/PlatformTabs';
+import RelatedTools from '@/components/RelatedTools';
 
 const PLATFORMS = {
   'Instagram': { max: 30 },
@@ -80,62 +81,13 @@ export default function HashtagGenerator() {
     }
   };
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How many hashtags should I use on Instagram?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Instagram allows up to 30 hashtags per post. However, best practices suggest using between 3 to 5 highly relevant hashtags to keep your post focused, though some creators still see success with using all 30."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do hashtags still work on Instagram in 2025?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, hashtags are still a critical part of Instagram SEO. They help categorize your content so it appears in search results and relevant explore pages."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are the best hashtags for getting followers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The best hashtags are a mix of broad (high reach) and niche (low competition) tags specific to your content. Avoid generic tags like #followforfollow."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Should I use popular or niche hashtags?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You should use a combination of both. Popular tags expose you to a large audience temporarily, while niche tags give you a chance to rank higher for a longer period."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I find trending hashtags?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can use our free hashtag generator above! Simply type your topic, and our AI will identify currently trending hashtags related to your niche."
-        }
-      }
-    ]
-  };
+
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="text-center mb-12">
-        <h1 className="font-clash text-4xl md:text-5xl font-bold mb-4">Hashtag Generator</h1>
-        <p className="text-muted max-w-2xl mx-auto">Discover the perfect mix of niche, trending, and broad hashtags to maximize your reach.</p>
+        <h1 className="font-clash text-4xl md:text-5xl font-bold mb-4">Free Hashtag Generator for Instagram, TikTok &amp; Twitter</h1>
+        <p className="text-muted max-w-2xl mx-auto">Discover the perfect mix of niche, trending, and broad hashtags to maximize your reach on every platform.</p>
       </div>
 
       <PlatformTabs 
@@ -211,24 +163,45 @@ export default function HashtagGenerator() {
         </div>
       )}
 
-      {/* SEO Content */}
-      <div className="mt-16 pt-8 border-t border-border prose prose-invert max-w-none">
-        <h2>About this tool</h2>
-        <p>Our Free Hashtag Generator creates optimized groups of hashtags based on your topic. By mixing niche, trending, and broad tags, you can bypass the algorithm and maximize organic reach on Instagram, TikTok, Twitter, and LinkedIn.</p>
-        <h3>Frequently Asked Questions</h3>
-        <dl>
-          <dt className="font-bold mt-4">How many hashtags should I use on Instagram?</dt>
-          <dd>Instagram allows up to 30 hashtags per post. However, best practices suggest using between 3 to 5 highly relevant hashtags to keep your post focused, though some creators still see success with using all 30.</dd>
-          <dt className="font-bold mt-4">Do hashtags still work on Instagram in 2025?</dt>
-          <dd>Yes, hashtags are still a critical part of Instagram SEO. They help categorize your content so it appears in search results and relevant explore pages.</dd>
-          <dt className="font-bold mt-4">What are the best hashtags for getting followers?</dt>
-          <dd>The best hashtags are a mix of broad (high reach) and niche (low competition) tags specific to your content. Avoid generic tags like #followforfollow.</dd>
-          <dt className="font-bold mt-4">Should I use popular or niche hashtags?</dt>
-          <dd>You should use a combination of both. Popular tags expose you to a large audience temporarily, while niche tags give you a chance to rank higher for a longer period.</dd>
-          <dt className="font-bold mt-4">How do I find trending hashtags?</dt>
-          <dd>You can use our free hashtag generator above! Simply type your topic, and our AI will identify currently trending hashtags related to your niche.</dd>
-        </dl>
-      </div>
+      {/* SEO Content & FAQ */}
+      <section className="mt-16 pt-8 border-t border-border space-y-8">
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-3">How the Free Hashtag Generator Works</h2>
+          <p className="text-muted leading-relaxed">
+            Our <strong className="text-text">AI hashtag generator</strong> analyses your topic and groups hashtags into three categories:
+            <strong className="text-text"> Niche</strong> (highly specific, less competition, longer visibility),
+            <strong className="text-text"> Trending</strong> (currently popular, high reach burst), and
+            <strong className="text-text"> Broad</strong> (large audiences, highly competitive).
+            Each hashtag shows its estimated reach level — use a balanced mix for optimal results.
+            Click any tag to select it, and hit <strong className="text-text">Copy Selected</strong> to copy all chosen hashtags as a single block of text ready to paste.
+            For <strong className="text-text">Instagram</strong>, the limit is 30 hashtags. For TikTok, aim for 3–5 focused ones.
+            Pair your hashtags with a compelling caption using our free <a href="/bio-generator" className="text-accent hover:underline">Bio Generator</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-5">
+            {[
+              { q: "How many hashtags should I use on Instagram?", a: "Instagram allows up to 30 hashtags per post. Best practices in 2025 suggest using 3–10 highly relevant hashtags. Quality beats quantity — use our niche and trending categories for the best results." },
+              { q: "Do hashtags still work on Instagram in 2025?", a: "Yes, hashtags are still a critical part of Instagram SEO. They help the algorithm categorize your content so it appears in search results and relevant Explore pages for new audiences." },
+              { q: "What are the best hashtags for getting more followers?", a: "The best strategy is mixing niche hashtags (low competition, longer ranking time) with trending ones (high reach, short burst). Avoid generic tags like #followforfollow which attract bots, not real followers." },
+              { q: "Should I use popular or niche hashtags?", a: "Both. Popular tags give you a short burst of wide exposure. Niche tags let you rank in a smaller category for longer. Our generator automatically provides both categories for the perfect mix." },
+              { q: "How do I find trending hashtags for my niche?", a: "Enter your topic into the input above and click Generate. Our AI identifies currently trending hashtags in your specific niche alongside broader and more specific alternatives." },
+            ].map((item, i) => (
+              <details key={i} className="group bg-surface border border-border rounded-xl p-5 cursor-pointer">
+                <summary className="font-semibold list-none flex justify-between items-center gap-2">
+                  {item.q}
+                  <span className="text-muted group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
+                </summary>
+                <p className="text-muted mt-3 text-sm leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <RelatedTools exclude="/hashtag-generator" />
     </div>
   );
 }

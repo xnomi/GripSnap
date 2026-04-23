@@ -3,6 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import JSZip from 'jszip';
+import RelatedTools from '@/components/RelatedTools';
 
 type SocialSize = {
   label: string;
@@ -156,8 +157,8 @@ export default function ImageResizer() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
-      <h1 className="font-clash text-4xl font-bold mb-4">Social Media Image Resizer</h1>
-      <p className="text-muted mb-8">Upload once, download perfectly sized images for Instagram, Twitter, Facebook and more.</p>
+      <h1 className="font-clash text-4xl font-bold mb-4">Free Social Media Image Resizer — All Platform Sizes</h1>
+      <p className="text-muted mb-8">Upload once. Download perfectly sized images for Instagram, Twitter/X, Facebook, LinkedIn, YouTube &amp; TikTok — 20+ size presets, free, no upload to server.</p>
 
       {!imageSrc ? (
         <div 
@@ -247,11 +248,42 @@ export default function ImageResizer() {
         </div>
       )}
 
-      {/* SEO Content */}
-      <div className="mt-16 pt-8 border-t border-border prose prose-invert max-w-none">
-        <h2>About this tool</h2>
-        <p>This completely free, privacy-friendly Social Media Image Resizer works entirely in your browser. Resize your images for Instagram posts, Twitter headers, Facebook covers, and YouTube thumbnails without losing quality or uploading your photos to a server.</p>
-      </div>
+      {/* SEO Content & FAQ */}
+      <section className="mt-16 pt-8 border-t border-border space-y-8">
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-3">Free Social Media Image Resizer — How It Works</h2>
+          <p className="text-muted leading-relaxed">
+            Our <strong className="text-text">social media image resizer</strong> runs entirely in your browser using the Canvas API — your images never leave your device.
+            Upload any JPG, PNG, or WEBP image, select a platform, and choose a size preset. For <strong className="text-text">Instagram</strong>, get all 5 sizes
+            (1080×1080, 1080×1350, 1080×566, Story 1080×1920, Profile 110×110) at once as a ZIP file.
+            Toggle <strong className="text-text">Maintain Aspect Ratio</strong> to add letterboxing instead of cropping.
+            Want the right thumbnail for your YouTube channel too? Use our free <a href="/youtube-thumbnail" className="text-accent hover:underline">YouTube Thumbnail Downloader</a> to grab existing ones as reference.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-5">
+            {[
+              { q: "What is the correct image size for Instagram posts?", a: "Instagram supports three post sizes: Square (1080×1080 px), Portrait (1080×1350 px), and Landscape (1080×566 px). For Stories and Reels, use 1080×1920 px." },
+              { q: "What is the Twitter/X header image size?", a: "The recommended Twitter/X profile header size is 1500×500 pixels. For image posts, use 1200×675 px for the optimal 16:9 display ratio." },
+              { q: "What size should a YouTube thumbnail be?", a: "YouTube recommends 1280×720 pixels (16:9 ratio), under 2 MB, in JPG, PNG, or WEBP. Our resizer includes this preset in the YouTube tab." },
+              { q: "Does this image resizer upload my photos to a server?", a: "No. GridSnap's resizer works entirely in your browser using the Canvas API. Your images are processed locally and are never uploaded to any server, ensuring complete privacy." },
+              { q: "Can I download all Instagram sizes at once?", a: "Yes! After uploading, select the Instagram tab and click 'Download All (ZIP)' to receive all 5 Instagram sizes (square, portrait, landscape, story, profile) in a single ZIP file." },
+            ].map((item, i) => (
+              <details key={i} className="group bg-surface border border-border rounded-xl p-5 cursor-pointer">
+                <summary className="font-semibold list-none flex justify-between items-center gap-2">
+                  {item.q}
+                  <span className="text-muted group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
+                </summary>
+                <p className="text-muted mt-3 text-sm leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <RelatedTools exclude="/image-resizer-social" />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import PlatformTabs from '@/components/PlatformTabs';
 import CharCounter from '@/components/CharCounter';
+import RelatedTools from '@/components/RelatedTools';
 
 const PLATFORMS = {
   'Instagram': 150,
@@ -168,11 +169,43 @@ export default function BioGenerator() {
         </div>
       </div>
 
-      {/* SEO Content */}
-      <div className="mt-16 pt-8 border-t border-border prose prose-invert max-w-none">
-        <h2>About this tool</h2>
-        <p>Crafting the perfect bio is crucial for making a strong first impression. Our Free Instagram Bio Generator uses AI to create compelling, emoji-rich bios tailored perfectly for character limits on Instagram, Twitter, LinkedIn, and TikTok.</p>
-      </div>
+      {/* SEO Content & FAQ */}
+      <section className="mt-16 pt-8 border-t border-border space-y-8">
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-3">Free Instagram Bio Generator — How It Works</h2>
+          <p className="text-muted leading-relaxed">
+            Your bio is the first thing people read when they visit your profile — it needs to be compelling in just a few words.
+            Our <strong className="text-text">free Instagram bio generator</strong> uses AI to craft 5 unique variations based on your name, profession, keywords, and tone.
+            Each bio respects your selected platform limit: <strong className="text-text">Instagram (150 chars)</strong>, <strong className="text-text">Twitter/X (160 chars)</strong>,
+            <strong className="text-text"> LinkedIn (220 chars)</strong>, and <strong className="text-text">TikTok (80 chars)</strong>.
+            After generating, check the character counter on each card and copy your favourite in one click.
+            Then pair it with the right hashtags using our free <a href="/hashtag-generator" className="text-accent hover:underline">Hashtag Generator</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-5">
+            {[
+              { q: "How do I write a good Instagram bio?", a: "A great Instagram bio includes your name or brand, what you do, a value proposition or personality hook, a call-to-action (link in bio), and relevant emojis. Keep it under 150 characters for Instagram." },
+              { q: "How many characters can an Instagram bio have?", a: "Instagram allows up to 150 characters in your bio. Our generator shows a live character counter on every variation so you never exceed the limit." },
+              { q: "What is a good LinkedIn headline?", a: "A good LinkedIn headline is professional, keyword-rich, and tells your career story in 220 characters. Focus on your role, key skills, and the value you bring to potential clients or employers." },
+              { q: "Can I use emojis in my Instagram bio?", a: "Yes! Emojis are highly encouraged in Instagram bios. They add personality, break up text, and communicate your niche quickly. Our AI automatically adds relevant emojis to every bio variation." },
+              { q: "Is this bio generator really free?", a: "Yes! GridSnap's bio generator is 100% free with no signup required. Generate unlimited bio variations for Instagram, Twitter, LinkedIn, and TikTok instantly." },
+            ].map((item, i) => (
+              <details key={i} className="group bg-surface border border-border rounded-xl p-5 cursor-pointer">
+                <summary className="font-semibold list-none flex justify-between items-center gap-2">
+                  {item.q}
+                  <span className="text-muted group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
+                </summary>
+                <p className="text-muted mt-3 text-sm leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <RelatedTools exclude="/bio-generator" />
     </div>
   );
 }

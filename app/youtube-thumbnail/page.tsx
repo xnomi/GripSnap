@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import RelatedTools from '@/components/RelatedTools';
 
 type ThumbSize = {
   label: string;
@@ -57,8 +58,8 @@ export default function YouTubeThumbnail() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="font-clash text-4xl font-bold mb-4">YouTube Thumbnail Downloader</h1>
-      <p className="text-muted mb-8">Enter any YouTube URL to preview and download its thumbnail in all available qualities instantly. No API key needed.</p>
+      <h1 className="font-clash text-4xl font-bold mb-4">YouTube Thumbnail Downloader — Free HD Download</h1>
+      <p className="text-muted mb-8">Paste any YouTube URL to instantly preview and download the thumbnail in Max Resolution, HQ, SD & MQ quality. No API key, no signup, works instantly.</p>
 
       <form onSubmit={handleFetch} className="flex flex-col sm:flex-row gap-4 mb-12">
         <input
@@ -112,11 +113,42 @@ export default function YouTubeThumbnail() {
         </div>
       )}
       
-      {/* SEO Content */}
-      <div className="mt-16 pt-8 border-t border-border prose prose-invert max-w-none">
-        <h2>About this tool</h2>
-        <p>This YouTube Thumbnail Downloader allows you to easily view and download thumbnails from any YouTube video in Full HD (1080p), High Quality (720p), and Standard qualities. Just paste the video link and get the images instantly.</p>
-      </div>
+      {/* SEO Content & FAQ */}
+      <section className="mt-16 pt-8 border-t border-border space-y-8">
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-3">How to Download a YouTube Thumbnail for Free</h2>
+          <p className="text-muted leading-relaxed">
+            Our <strong className="text-text">free YouTube thumbnail downloader</strong> works without any API key or browser extension.
+            YouTube thumbnails are publicly accessible at standard URLs — we simply fetch and display them for you. You can download
+            thumbnails in <strong className="text-text">Max Resolution (1280×720 px HD)</strong>, High Quality (480×360), Standard (640×480),
+            Medium (320×180), and Default (120×90). Not every video has a maxresdefault thumbnail — older videos may only have hqdefault.
+            Want to resize a thumbnail you create? Use our free <a href="/image-resizer-social" className="text-accent hover:underline">Image Resizer</a> to match the exact YouTube recommended size (1280×720).
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-5">
+            {[
+              { q: "How do I download a YouTube thumbnail for free?", a: "Paste the YouTube video URL into the input above and click 'Get Thumbnails.' All available sizes appear instantly with download buttons. No signup or extension required." },
+              { q: "What is the highest quality YouTube thumbnail?", a: "The highest quality thumbnail is 'maxresdefault' at 1280×720 pixels (HD). Not all videos have this — older videos may only have 'hqdefault' at 480×360." },
+              { q: "Is it legal to download YouTube thumbnails?", a: "YouTube thumbnails are publicly accessible images. However, they may be copyrighted by the content creator. Use downloaded thumbnails for personal use, research, or with the creator's permission only." },
+              { q: "Can I download thumbnails without a YouTube API key?", a: "Yes! YouTube thumbnails are served at predictable public URLs (img.youtube.com/vi/VIDEO_ID/quality.jpg). No API key is needed. Our tool accesses these public URLs directly." },
+              { q: "What thumbnail size should I use for my own YouTube videos?", a: "YouTube recommends 1280×720 pixels (16:9 ratio), under 2 MB, in JPG, PNG, or WEBP format. Use our free Social Media Image Resizer to resize your thumbnail to the exact correct dimensions." },
+            ].map((item, i) => (
+              <details key={i} className="group bg-surface border border-border rounded-xl p-5 cursor-pointer">
+                <summary className="font-semibold list-none flex justify-between items-center gap-2">
+                  {item.q}
+                  <span className="text-muted group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
+                </summary>
+                <p className="text-muted mt-3 text-sm leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <RelatedTools exclude="/youtube-thumbnail" />
     </div>
   );
 }

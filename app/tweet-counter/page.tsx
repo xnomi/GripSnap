@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import PlatformTabs from '@/components/PlatformTabs';
 import CharCounter from '@/components/CharCounter';
+import RelatedTools from '@/components/RelatedTools';
 
 const PLATFORMS = {
   'Twitter/X': 280,
@@ -140,11 +141,43 @@ export default function TweetCounter() {
         </div>
       )}
 
-      {/* SEO Content */}
-      <div className="mt-16 pt-8 border-t border-border prose prose-invert max-w-none">
-        <h2>About this tool</h2>
-        <p>The free online social media character counter helps you perfectly size your posts for Twitter, LinkedIn, Instagram, Facebook, and TikTok. Prevent frustrating errors when you hit &quot;post&quot; by checking your character limits beforehand.</p>
-      </div>
+      {/* SEO Content & FAQ */}
+      <section className="mt-16 pt-8 border-t border-border space-y-8">
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-3">Free Twitter Character Counter — How It Works</h2>
+          <p className="text-muted leading-relaxed">
+            Our <strong className="text-text">free tweet character counter</strong> gives you a live count as you type, with a circular progress indicator that turns red when you hit the limit.
+            For <strong className="text-text">Twitter/X</strong>, every URL is automatically counted as 23 characters (t.co shortening),
+            matching exactly how Twitter counts your characters. Switch between <strong className="text-text">LinkedIn (3,000 chars)</strong>,
+            <strong className="text-text"> Instagram captions (2,200 chars)</strong>, <strong className="text-text">Facebook (63,206 chars)</strong>,
+            and <strong className="text-text">TikTok (2,200 chars)</strong> using the tabs.
+          </p>
+        </div>
+
+        <div>
+          <h2 className="font-clash text-2xl font-bold mb-4">Frequently Asked Questions</h2>
+          <div className="space-y-5">
+            {[
+              { q: "What is Twitter's character limit in 2025?", a: "Twitter/X has a 280-character limit for standard accounts. Every URL counts as exactly 23 characters regardless of length. Our counter handles this automatically." },
+              { q: "What is LinkedIn's character limit for posts?", a: "LinkedIn allows up to 3,000 characters for regular posts. Articles have no character limit, but post captions are capped at 3,000 characters." },
+              { q: "How do I split a long tweet into a thread automatically?", a: "Type or paste your full text into the counter, select the Twitter/X tab, and when your text exceeds 280 characters, an 'Auto-Split into Thread' button appears. Click it to split your text into numbered tweet-sized pieces automatically." },
+              { q: "Do URLs count as 23 characters on Twitter?", a: "Yes. Twitter automatically wraps all URLs using t.co, which makes every link count as exactly 23 characters regardless of the original URL length. Our counter accounts for this in real time." },
+              { q: "What is the Instagram caption character limit?", a: "Instagram captions can be up to 2,200 characters long. However, only the first 125 characters appear before the 'more' button, so front-load important information." },
+            ].map((item, i) => (
+              <details key={i} className="group bg-surface border border-border rounded-xl p-5 cursor-pointer">
+                <summary className="font-semibold list-none flex justify-between items-center gap-2">
+                  {item.q}
+                  <span className="text-muted group-open:rotate-180 transition-transform flex-shrink-0">▼</span>
+                </summary>
+                <p className="text-muted mt-3 text-sm leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <RelatedTools exclude="/tweet-counter" />
     </div>
   );
 }
+
