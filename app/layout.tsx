@@ -50,6 +50,9 @@ export const metadata: Metadata = {
   verification: {
     // google: 'YOUR_GOOGLE_VERIFICATION_CODE', // Add after Google Search Console setup
   },
+  other: {
+    'google-adsense-account': 'ca-pub-1360321193594177',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
