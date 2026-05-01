@@ -16,7 +16,7 @@ export default function AdUnit({ slot, format = 'auto', layout, className, style
 
   useEffect(() => {
     try {
-      // @ts-ignore
+      // @ts-expect-error: window.adsbygoogle is injected by AdSense script
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (err) {
       console.error('AdSense error:', err);
