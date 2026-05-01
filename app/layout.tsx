@@ -3,8 +3,9 @@ import Script from 'next/script';
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CookieConsent from '../components/CookieConsent';
 
-const BASE = 'https://gridsnap.app';
+const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
@@ -98,18 +99,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-S5NNCHC7V3" strategy="afterInteractive" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-XC11P6N0EH" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-S5NNCHC7V3');
+            gtag('config', 'G-XC11P6N0EH');
           `}
         </Script>
         <Header />
         <main className="flex-grow">{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

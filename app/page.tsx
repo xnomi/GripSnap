@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import AdUnit from '@/components/AdUnit';
 
-const BASE = 'https://gridsnap.app';
+const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
   title: 'GridSnap — Free Social Media Tools: Hashtag Generator, Bio, Image Resizer',
@@ -118,6 +119,10 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <div className="max-w-5xl mx-auto px-4">
+        <AdUnit slot="auto-slot" format="auto" className="my-10" />
+      </div>
 
       {/* ── Tools Grid ── */}
       <section className="w-full max-w-7xl mx-auto px-4 py-16" aria-label="Free social media tools">

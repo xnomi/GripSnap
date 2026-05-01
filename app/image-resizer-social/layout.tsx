@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const BASE = 'https://gridsnap.app';
+const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
   title: 'Social Media Image Resizer Free — All Platform Sizes | GridSnap',

@@ -52,7 +52,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-text font-semibold text-2xl mt-8 mb-4">7. Contact Us</h2>
         <p>
-          If you have any questions or suggestions about our Privacy Policy, please contact us at <a href="mailto:privacy@gridsnap.app" className="text-accent hover:underline">privacy@gridsnap.app</a>.
+          If you have any questions or suggestions about our Privacy Policy, please contact us at <a href="mailto:privacy@gridsnap.studio" className="text-accent hover:underline">privacy@gridsnap.studio</a>.
         </p>
       </section>
     </div>

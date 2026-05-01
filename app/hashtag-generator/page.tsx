@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import PlatformTabs from '@/components/PlatformTabs';
 import RelatedTools from '@/components/RelatedTools';
+import AdUnit from '@/components/AdUnit';
 
 const PLATFORMS = {
   'Instagram': { max: 30 },
@@ -96,6 +97,8 @@ export default function HashtagGenerator() {
         onSelect={(p) => setPlatform(p as keyof typeof PLATFORMS)} 
       />
 
+      <AdUnit slot="auto-slot" format="auto" className="my-6" />
+
       <div className="bg-surface border border-border rounded-2xl p-6 mb-8">
         <form onSubmit={handleGenerate} className="flex flex-col md:flex-row gap-4">
           <input
@@ -162,6 +165,8 @@ export default function HashtagGenerator() {
           </div>
         </div>
       )}
+
+      <AdUnit slot="auto-slot-2" format="auto" className="my-10" />
 
       {/* SEO Content & FAQ */}
       <section className="mt-16 pt-8 border-t border-border space-y-8">

@@ -4,6 +4,7 @@ import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import JSZip from 'jszip';
 import RelatedTools from '@/components/RelatedTools';
+import AdUnit from '@/components/AdUnit';
 
 type SocialSize = {
   label: string;
@@ -160,6 +161,8 @@ export default function ImageResizer() {
       <h1 className="font-clash text-4xl font-bold mb-4">Free Social Media Image Resizer — All Platform Sizes</h1>
       <p className="text-muted mb-8">Upload once. Download perfectly sized images for Instagram, Twitter/X, Facebook, LinkedIn, YouTube &amp; TikTok — 20+ size presets, free, no upload to server.</p>
 
+      <AdUnit slot="auto-slot" format="auto" className="my-6" />
+
       {!imageSrc ? (
         <div 
           {...getRootProps()} 
@@ -247,6 +250,8 @@ export default function ImageResizer() {
           </div>
         </div>
       )}
+
+      <AdUnit slot="auto-slot-2" format="auto" className="my-10" />
 
       {/* SEO Content & FAQ */}
       <section className="mt-16 pt-8 border-t border-border space-y-8">

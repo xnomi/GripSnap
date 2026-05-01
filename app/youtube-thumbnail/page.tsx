@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import RelatedTools from '@/components/RelatedTools';
+import AdUnit from '@/components/AdUnit';
 
 type ThumbSize = {
   label: string;
@@ -61,6 +62,8 @@ export default function YouTubeThumbnail() {
       <h1 className="font-clash text-4xl font-bold mb-4">YouTube Thumbnail Downloader — Free HD Download</h1>
       <p className="text-muted mb-8">Paste any YouTube URL to instantly preview and download the thumbnail in Max Resolution, HQ, SD & MQ quality. No API key, no signup, works instantly.</p>
 
+      <AdUnit slot="auto-slot" format="auto" className="my-6" />
+
       <form onSubmit={handleFetch} className="flex flex-col sm:flex-row gap-4 mb-12">
         <input
           type="text"
@@ -113,6 +116,8 @@ export default function YouTubeThumbnail() {
         </div>
       )}
       
+      <AdUnit slot="auto-slot-2" format="auto" className="my-10" />
+
       {/* SEO Content & FAQ */}
       <section className="mt-16 pt-8 border-t border-border space-y-8">
         <div>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import PlatformTabs from '@/components/PlatformTabs';
 import CharCounter from '@/components/CharCounter';
 import RelatedTools from '@/components/RelatedTools';
+import AdUnit from '@/components/AdUnit';
 
 const PLATFORMS = {
   'Instagram': 150,
@@ -82,6 +83,8 @@ export default function BioGenerator() {
         activePlatform={platform} 
         onSelect={(p) => setPlatform(p as keyof typeof PLATFORMS)} 
       />
+
+      <AdUnit slot="auto-slot" format="auto" className="my-6" />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <div className="lg:col-span-5 bg-surface border border-border p-6 rounded-2xl">
@@ -168,6 +171,8 @@ export default function BioGenerator() {
           )}
         </div>
       </div>
+
+      <AdUnit slot="auto-slot-2" format="auto" className="my-10" />
 
       {/* SEO Content & FAQ */}
       <section className="mt-16 pt-8 border-t border-border space-y-8">

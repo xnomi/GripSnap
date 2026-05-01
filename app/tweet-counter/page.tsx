@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import PlatformTabs from '@/components/PlatformTabs';
 import CharCounter from '@/components/CharCounter';
 import RelatedTools from '@/components/RelatedTools';
+import AdUnit from '@/components/AdUnit';
 
 const PLATFORMS = {
   'Twitter/X': 280,
@@ -82,6 +83,8 @@ export default function TweetCounter() {
         }} 
       />
 
+      <AdUnit slot="auto-slot" format="auto" className="my-6" />
+
       <div className="bg-surface border border-border rounded-2xl overflow-hidden mb-6">
         <div className="p-4 border-b border-border bg-surface2 flex justify-between items-center">
           <div className="flex items-center gap-4">
@@ -140,6 +143,8 @@ export default function TweetCounter() {
           ))}
         </div>
       )}
+
+      <AdUnit slot="auto-slot-2" format="auto" className="my-10" />
 
       {/* SEO Content & FAQ */}
       <section className="mt-16 pt-8 border-t border-border space-y-8">
