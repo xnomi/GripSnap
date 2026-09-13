@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Use | GridSnap',
+  title: 'Terms of Use',
   description: 'Terms of Use and Service for GridSnap. Please read these terms carefully before using our free social media tools.',
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ContactForm from '@/components/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | GridSnap',
+  title: 'Contact GridSnap',
   description: 'Get in touch with the GridSnap team. We would love to hear your feedback, feature requests, or answer any questions you might have.',
 };
 

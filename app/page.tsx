@@ -5,8 +5,8 @@ import AdUnit from '@/components/AdUnit';
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'GridSnap — Free Social Media Tools: Hashtag Generator, Bio, Image Resizer',
-  description: 'Free AI-powered social media tools for creators: Instagram bio generator, hashtag finder, image resizer for every platform, tweet character counter & YouTube thumbnail downloader. No signup needed.',
+  title: 'Free Social Media Tools for Creators',
+  description: 'Free tools for Instagram bios, hashtags, image resizing, character counting, and YouTube thumbnails. No signup, no watermark, and instant results.',
   alternates: { canonical: BASE },
 };
 

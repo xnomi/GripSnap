@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'Free Hashtag Generator Online — Instagram TikTok Twitter | GridSnap',
-  description: 'Find the best hashtags for Instagram, TikTok, Twitter & LinkedIn instantly. AI groups tags into niche, trending & broad categories with estimated reach. Free online hashtag finder — no signup.',
+  title: 'Free Hashtag Generator for Instagram and TikTok',
+  description: 'Generate relevant niche, broad, and trending hashtag ideas for Instagram, TikTok, X, and LinkedIn. Free and instant.',
   keywords: ['hashtag generator free', 'instagram hashtag generator', 'tiktok hashtag generator', 'twitter hashtag generator', 'best hashtags for instagram', 'trending hashtags', 'niche hashtags'],
   alternates: { canonical: `${BASE}/hashtag-generator` },
   openGraph: {

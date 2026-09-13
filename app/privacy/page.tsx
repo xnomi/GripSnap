@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | GridSnap',
+  title: 'Privacy Policy',
   description: 'Privacy Policy for GridSnap. Learn how we handle your data and protect your privacy while using our free social media tools.',
 };
 

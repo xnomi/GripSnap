@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'Twitter Character Counter Free Online — Thread Splitter | GridSnap',
-  description: 'Free character counter for Twitter/X (280), LinkedIn (3000), Instagram (2200), Facebook & TikTok. Auto-split long posts into numbered tweet threads. Live count, no signup needed.',
+  title: 'Twitter/X Character Counter and Thread Splitter',
+  description: 'Count characters for X, LinkedIn, Instagram, Facebook, and TikTok, then split long X posts into numbered threads.',
   keywords: ['tweet character counter', 'twitter character counter online free', 'twitter thread splitter', 'linkedin character limit', 'social media character counter', '280 character limit checker'],
   alternates: { canonical: `${BASE}/tweet-counter` },
   openGraph: {

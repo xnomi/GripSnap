@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'Free Instagram Bio Generator Online — AI-Powered Social Bios | GridSnap',
-  description: 'Generate the perfect Instagram bio instantly with AI. Get 5 unique bio variations optimized for Instagram (150 chars), Twitter/X (160), LinkedIn (220) & TikTok (80). Free, no signup needed.',
+  title: 'Free Instagram Bio Generator | AI Bio Ideas',
+  description: 'Generate five Instagram, TikTok, LinkedIn, or X bio ideas with character counts. Free, instant, and requires no signup.',
   keywords: ['instagram bio generator free', 'ai bio generator', 'social media bio generator', 'tiktok bio generator', 'twitter bio generator', 'linkedin bio generator'],
   alternates: { canonical: `${BASE}/bio-generator` },
   openGraph: {

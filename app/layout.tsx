@@ -10,20 +10,10 @@ const BASE = 'https://gridsnap.studio';
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: 'GridSnap — Free Social Media Tools: Hashtag Generator, Bio, Image Resizer',
+    default: 'Free Social Media Tools for Creators',
     template: '%s | GridSnap',
   },
-  description: 'Free AI-powered social media tools: Instagram bio generator, hashtag finder, image resizer for every platform, tweet character counter & YouTube thumbnail downloader. No signup — instant results.',
-  keywords: [
-    'free social media tools',
-    'instagram tools online free',
-    'social media tools for creators',
-    'hashtag generator free',
-    'instagram bio generator free',
-    'social media image resizer free',
-    'tweet character counter online',
-    'youtube thumbnail downloader free',
-  ],
+  description: 'Free tools for Instagram bios, hashtags, image resizing, character counting, and YouTube thumbnails. No signup, no watermark, and instant results.',
   authors: [{ name: 'GridSnap', url: BASE }],
   creator: 'GridSnap',
   publisher: 'GridSnap',
@@ -34,8 +24,8 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: BASE },
   openGraph: {
-    title: 'GridSnap — Free Social Media Tools for Creators',
-    description: 'AI bio generator, hashtag finder, image resizer, tweet counter & YouTube thumbnail downloader. All free, no signup.',
+    title: 'Free Social Media Tools for Creators | GridSnap',
+    description: 'Create social media bios, find hashtags, resize images, count characters, and download YouTube thumbnails for free.',
     url: BASE,
     siteName: 'GridSnap',
     type: 'website',
@@ -43,13 +33,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GridSnap — Free Social Media Tools',
-    description: 'AI bio generator, hashtag finder, image resizer & more. Free, no signup required.',
+    title: 'Free Social Media Tools for Creators | GridSnap',
+    description: 'Free tools for social media bios, hashtags, image sizes, character counts, and YouTube thumbnails.',
     creator: '@gridsnap',
     site: '@gridsnap',
-  },
-  verification: {
-    // google: 'YOUR_GOOGLE_VERIFICATION_CODE', // Add after Google Search Console setup
   },
   other: {
     'google-adsense-account': 'ca-pub-1360321193594177',
@@ -64,11 +51,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       name: 'GridSnap',
       url: BASE,
       description: 'Free social media tools for creators and marketers.',
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: { '@type': 'EntryPoint', urlTemplate: `${BASE}/?q={search_term_string}` },
-        'query-input': 'required name=search_term_string',
-      },
     },
     {
       '@context': 'https://schema.org',
@@ -80,6 +62,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer service',
+        email: 'hello@gridsnap.studio',
+        url: `${BASE}/contact`,
         availableLanguage: 'English',
       },
     },

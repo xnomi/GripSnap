@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'Social Media Image Resizer Free — All Platform Sizes | GridSnap',
-  description: 'Resize any image for Instagram, Twitter/X, Facebook, LinkedIn, YouTube & TikTok in one click. 20+ size presets. Free, works in your browser — no upload, no signup needed.',
+  title: 'Social Media Image Resizer | Instagram, YouTube and TikTok',
+  description: 'Resize images to exact Instagram, YouTube, TikTok, Facebook, LinkedIn, and X dimensions in your browser. No upload required.',
   keywords: ['social media image resizer free', 'instagram image size tool', 'resize image for instagram', 'facebook image resizer', 'youtube thumbnail size', 'social media image dimensions'],
   alternates: { canonical: `${BASE}/image-resizer-social` },
   openGraph: {

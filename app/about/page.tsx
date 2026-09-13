@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'About GridSnap | Free Social Media Tools for Creators',
+  title: 'About GridSnap: Free Creator Tools',
   description: 'Learn about GridSnap, the all-in-one suite of free social media tools built to help creators, marketers, and influencers grow their audience faster.',
 };
 

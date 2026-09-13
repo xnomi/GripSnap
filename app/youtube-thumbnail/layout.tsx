@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'YouTube Thumbnail Downloader Free — All Quality Sizes HD | GridSnap',
-  description: 'Download any YouTube video thumbnail in Max Resolution (1280×720), HQ, MQ, SD & default quality. Just paste the URL — no API key, no login. Works instantly, 100% free.',
+  title: 'Free YouTube Thumbnail Downloader in HD',
+  description: 'Download available YouTube thumbnails in max resolution, HD, HQ, SD, and medium quality by pasting a video URL.',
   keywords: ['youtube thumbnail downloader free', 'download youtube thumbnail', 'youtube thumbnail hd download', 'youtube thumbnail extractor', 'save youtube thumbnail', 'youtube maxresdefault'],
   alternates: { canonical: `${BASE}/youtube-thumbnail` },
   openGraph: {
