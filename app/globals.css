@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap');
 
 @tailwind base;
@@ -6,18 +6,19 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0f0f0f;
-  --surface: #1a1a1a;
-  --surface2: #252525;
-  --accent: #ff6ec7;
-  --accent2: #ffd700;
-  --accent3: #00f5d4;
-  --text: #f5f5f5;
-  --muted: #888888;
-  --border: #2a2a2a;
+  --bg: #090d16;
+  --surface: #111827;
+  --surface2: #1e293b;
+  --surface3: #334155;
+  --accent: #10b981;
+  --accent2: #06b6d4;
+  --accent3: #6366f1;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #283548;
 
-  --font-clash: 'Clash Display', sans-serif;
-  --font-satoshi: 'Satoshi', sans-serif;
+  --font-clash: 'Clash Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-satoshi: 'Satoshi', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-fira: 'Fira Code', monospace;
 }
 
@@ -25,44 +26,48 @@ body {
   color: var(--text);
   background-color: var(--bg);
   font-family: var(--font-satoshi);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-clash);
+  letter-spacing: -0.02em;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .bg-gradient {
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
 }
 
 .card-hover {
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
-.card-hover::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+.card-hover:hover {
+  border-color: rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
 }
 
-.card-hover:hover::before {
-  opacity: 1;
+/* Form input touch target & iOS auto-zoom prevention */
+input, select, textarea {
+  font-size: 16px !important;
 }
 
-/* Prevent browser autofill white flash */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -73,22 +78,87 @@ select:-webkit-autofill {
   caret-color: var(--text);
 }
 
-/* Global input defaults */
-input,
-textarea,
-select {
-  color: var(--text);
-  background-color: var(--surface2);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--muted);
-}
-
-/* Select option dark background */
+/* Select option styling */
 option {
   background-color: var(--surface2);
   color: var(--text);
 }
 
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Executive Print Stylesheet for Timesheet / PDF Export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  }
+
+  header,
+  footer,
+  .no-print,
+  .ad-container,
+  [data-no-print="true"],
+  .cookie-banner {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .printable-card {
+    background: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 24px !important;
+    margin: 0 !important;
+    page-break-inside: avoid;
+  }
+
+  .printable-card table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  .printable-card th,
+  .printable-card td {
+    border: 1px solid #e5e7eb !important;
+    padding: 8px 12px !important;
+    color: #111827 !important;
+    font-size: 12px !important;
+  }
+
+  .printable-card th {
+    background-color: #f3f4f6 !important;
+    font-weight: 700 !important;
+  }
+
+  .text-gradient {
+    -webkit-text-fill-color: initial !important;
+    background: none !important;
+    color: #111827 !important;
+  }
+}

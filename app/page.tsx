@@ -1,230 +1,335 @@
-import Link from 'next/link';
 import type { Metadata } from 'next';
-import AdUnit from '@/components/AdUnit';
+import TimeCardCalculator from '@/components/TimeCardCalculator';
+import FaqAccordion from '@/components/FaqAccordion';
+import Link from 'next/link';
 
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
-  title: 'Free Social Media Tools for Creators',
-  description: 'Free tools for Instagram bios, hashtags, image resizing, character counting, and YouTube thumbnails. No signup, no watermark, and instant results.',
-  alternates: { canonical: BASE },
+  title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
+  description:
+    'Calculate your weekly and biweekly work hours, unpaid lunch breaks, overtime, and gross hourly pay with our free, private time card calculator. Export to PDF & CSV.',
+  alternates: {
+    canonical: BASE,
+  },
+  openGraph: {
+    title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
+    description:
+      'Free, client-side weekly and biweekly work hours, lunch break deductions, overtime, and gross pay calculator with instant PDF/CSV export.',
+    url: BASE,
+    siteName: 'GridSnap Work Tools',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
+    description: 'Calculate work hours and overtime with instant PDF/CSV export.',
+  },
 };
 
-const tools = [
+const faqs = [
   {
-    title: 'Instagram Bio Generator',
-    description: 'Generate 5 AI-powered bio variations for Instagram, Twitter, LinkedIn & TikTok with perfect character counts.',
-    href: '/bio-generator',
-    icon: '✨',
-    platforms: ['Instagram', 'Twitter', 'LinkedIn', 'TikTok'],
-    cta: 'Generate Bio',
+    question: 'How do you calculate total hours worked with lunch breaks deducted?',
+    answer:
+      'To calculate total hours worked with lunch deductions, first convert your shift start and end times into military (24-hour) decimal format. Subtract the start time from the end time to determine raw elapsed time. Next, convert your unpaid lunch break into decimal hours (for example, 30 minutes equals 0.5 hours, and 45 minutes equals 0.75 hours) and subtract it from the elapsed time. Finally, multiply the remaining regular hours (up to 40 per week under FLSA) by your base hourly rate, and multiply any overtime hours by 1.5 times your rate to determine total gross pay.',
   },
   {
-    title: 'Hashtag Generator',
-    description: 'Find niche, trending & broad hashtags with estimated reach levels to maximize your content discovery.',
-    href: '/hashtag-generator',
-    icon: '#️⃣',
-    platforms: ['Instagram', 'TikTok', 'Twitter', 'LinkedIn'],
-    cta: 'Find Hashtags',
+    question: 'Does federal law require employers to provide paid lunch breaks?',
+    answer:
+      'Under the U.S. Fair Labor Standards Act (FLSA), federal law does not mandate that employers provide meal or rest breaks. However, federal regulations stipulate that if an employer offers a bona fide meal break (usually 30 minutes or longer), the employee must be completely relieved of all work duties for the break to be unpaid. If the employee is required to perform any active or inactive duties during lunch—such as answering phones or monitoring equipment—the entire break must be paid as hours worked.',
   },
   {
-    title: 'Social Media Image Resizer',
-    description: 'Resize any image to exact platform dimensions for Instagram, Twitter, Facebook, YouTube, TikTok & LinkedIn.',
-    href: '/image-resizer-social',
-    icon: '🖼️',
-    platforms: ['Instagram', 'Twitter', 'Facebook', 'YouTube', 'LinkedIn', 'TikTok'],
-    cta: 'Resize Image',
+    question: 'How does overtime work on a biweekly pay schedule?',
+    answer:
+      'Under FLSA regulations (29 CFR § 778.104), overtime cannot be averaged across two weeks of a biweekly pay period. Each standard workweek stands alone as a fixed 7-consecutive-day period (168 hours). If a non-exempt employee works 48 hours in Week 1 and 32 hours in Week 2 (totaling 80 hours across the pay period), the employer is legally obligated to pay 8 hours of overtime for Week 1 at 1.5x regular pay. The employer cannot average the two weeks to avoid overtime liability.',
   },
   {
-    title: 'Tweet Character Counter',
-    description: 'Count characters across Twitter, LinkedIn, Instagram & Facebook. Auto-split long text into numbered threads.',
-    href: '/tweet-counter',
-    icon: '📝',
-    platforms: ['Twitter', 'LinkedIn', 'Instagram', 'Facebook'],
-    cta: 'Count Characters',
+    question: 'What is the standard formula to convert work minutes into payroll decimals?',
+    answer:
+      'To convert minutes into payroll decimal hours, divide the exact number of minutes by 60. For example: 15 minutes ÷ 60 = 0.25 hours; 30 minutes ÷ 60 = 0.50 hours; 45 minutes ÷ 60 = 0.75 hours. Many payroll systems also utilize the FLSA 7-minute rounding rule (29 CFR § 785.48(b)), where punches between 1 and 7 minutes round down to the nearest 15-minute quarter-hour, and punches between 8 and 14 minutes round up to the nearest quarter-hour.',
   },
   {
-    title: 'YouTube Thumbnail Downloader',
-    description: 'Download any YouTube thumbnail in Max HD, HQ, MQ & SD quality instantly — no API key, no login.',
-    href: '/youtube-thumbnail',
-    icon: '▶️',
-    platforms: ['YouTube'],
-    cta: 'Download Thumbnail',
+    question: 'Is my timesheet and payroll data kept private on GridSnap?',
+    answer:
+      'Yes. GridSnap operates 100% client-side in your web browser using HTML5 LocalStorage. None of your entered work hours, shift schedules, hourly wage rates, employee identities, or gross pay totals are ever transmitted to, processed by, or stored on remote web servers.',
   },
 ];
 
-const stats = [
-  { value: '50,000+', label: 'Creators use GridSnap' },
-  { value: '5', label: 'Free tools, no signup' },
-  { value: '20+', label: 'Platform size presets' },
-  { value: '100%', label: 'Runs in your browser' },
-];
+export default function HomePage() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        name: 'GridSnap Time Card & Wage Calculator',
+        url: BASE,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'All',
+        browserRequirements: 'Requires JavaScript. Runs client-side.',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+        description:
+          'Free client-side weekly and biweekly time card calculator with unpaid lunch break deductions, overtime calculations, CSV export, and PDF printable timesheets.',
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: BASE,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Time Card Calculator',
+            item: BASE,
+          },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer,
+          },
+        })),
+      },
+    ],
+  };
 
-const platformSizes = [
-  { platform: 'Instagram', type: 'Square Post', size: '1080 × 1080 px' },
-  { platform: 'Instagram', type: 'Portrait Post', size: '1080 × 1350 px' },
-  { platform: 'Instagram', type: 'Story / Reel', size: '1080 × 1920 px' },
-  { platform: 'Instagram', type: 'Profile Photo', size: '110 × 110 px' },
-  { platform: 'Twitter/X', type: 'Profile Header', size: '1500 × 500 px' },
-  { platform: 'Twitter/X', type: 'Post Image', size: '1200 × 675 px' },
-  { platform: 'Twitter/X', type: 'Profile Photo', size: '400 × 400 px' },
-  { platform: 'Facebook', type: 'Cover Photo', size: '851 × 315 px' },
-  { platform: 'Facebook', type: 'Post Image', size: '1200 × 630 px' },
-  { platform: 'LinkedIn', type: 'Banner', size: '1584 × 396 px' },
-  { platform: 'LinkedIn', type: 'Post Image', size: '1200 × 627 px' },
-  { platform: 'YouTube', type: 'Thumbnail', size: '1280 × 720 px' },
-  { platform: 'YouTube', type: 'Channel Banner', size: '2560 × 1440 px' },
-  { platform: 'TikTok', type: 'Video Cover', size: '1080 × 1920 px' },
-  { platform: 'TikTok', type: 'Profile Photo', size: '200 × 200 px' },
-];
-
-export default function Home() {
   return (
-    <div className="flex flex-col items-center">
+    <div className="w-full">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-      {/* ── Hero ── */}
-      <section className="w-full relative py-24 px-4 overflow-hidden flex flex-col items-center justify-center text-center">
-        <div className="absolute inset-0 bg-gradient-primary opacity-10 z-0 animate-gradient-x" />
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface2 border border-border text-sm font-medium">
-            <span className="animate-pulse">🔥</span> Used by 50,000+ creators worldwide
+      {/* Hero Section */}
+      <section className="w-full pt-10 pb-6 px-4 max-w-7xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto mb-8">
+          <div className="no-print inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface2 border border-border text-xs font-semibold text-emerald-400 mb-4">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Private Client-Side Calculator • Zero Server Data Storage
           </div>
-          <h1 className="font-clash text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-            <span className="text-gradient">Free Social Media Tools</span>
-            <br />
-            <span className="text-text">Grow Your Audience Faster</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Free Time Card Calculator with Lunch Breaks
           </h1>
-          <p className="text-lg md:text-xl text-muted max-w-2xl">
-            AI-powered Instagram bio generator, hashtag finder, image resizer for every platform, tweet character counter, and YouTube thumbnail downloader — all free, all instant.
+          <p className="mt-3 text-base sm:text-lg text-muted leading-relaxed">
+            Track weekly and biweekly work hours, deduct unpaid lunch breaks, compute FLSA overtime, and estimate gross hourly pay. Export ready-to-file timesheets to PDF and CSV instantly.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-4">
-            <Link href="/bio-generator" className="px-6 py-3 bg-gradient rounded-xl text-bg font-bold hover:opacity-90 transition-opacity">
-              ✨ Generate Bio
-            </Link>
-            <Link href="/hashtag-generator" className="px-6 py-3 bg-surface2 border border-border rounded-xl text-text font-bold hover:border-accent transition-colors">
-              #️⃣ Find Hashtags
-            </Link>
-          </div>
+        </div>
+
+        {/* Interactive Tool Component */}
+        <div className="max-w-5xl mx-auto">
+          <TimeCardCalculator />
         </div>
       </section>
 
-      {/* ── Stats Bar ── */}
-      <section className="w-full bg-surface border-y border-border py-8 px-4">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {stats.map(s => (
-            <div key={s.label}>
-              <p className="font-clash text-3xl font-bold text-gradient">{s.value}</p>
-              <p className="text-sm text-muted mt-1">{s.label}</p>
+      {/* ── Editorial & Educational Content (AdSense & E-E-A-T Compliant) ── */}
+      <section className="w-full py-12 px-4 bg-surface/40 border-t border-border no-print">
+        <div className="max-w-4xl mx-auto space-y-12">
+          {/* Direct AEO / GEO Answer Block */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-surface2/70 border border-emerald-500/30 shadow-lg">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Direct Answer • Executive Summary
             </div>
-          ))}
-        </div>
-      </section>
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">
+              How to calculate total hours worked with lunch deductions?
+            </h2>
+            <p className="text-base sm:text-lg text-gray-200 leading-relaxed font-medium">
+              To calculate total hours worked, subtract your start time from your end time in 24-hour decimal format, then subtract your unpaid lunch break in decimal minutes (e.g., 30 minutes = 0.5 hours). Multiply the remaining regular hours by your base wage, and hours over 40 by 1.5 for overtime gross pay.
+            </p>
+          </div>
 
-      <div className="max-w-5xl mx-auto px-4">
-        <AdUnit slot="auto-slot" format="auto" className="my-10" />
-      </div>
+          {/* Educational Copy: In-depth FLSA, Lunch, and Overtime Guide */}
+          <article className="prose prose-invert max-w-none text-muted leading-relaxed space-y-8">
+            <div>
+              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Complete Guide to Work Hours, Lunch Break Deductions & Overtime Rules
+              </h2>
+              <p>
+                Accurate time tracking is the cornerstone of fair compensation and payroll compliance across all Tier-1 economies, including the United States, Canada, Australia, and New Zealand. Whether you are an hourly employee auditing your paycheck, an independent contractor submitting an invoice, or a small business manager running weekly payroll, understanding how shift punch times translate into decimal hours and statutory overtime is critical.
+              </p>
+              <p>
+                In the United States, the primary governing statute is the federal <strong>Fair Labor Standards Act (FLSA)</strong>, enforced by the Wage and Hour Division (WHD) of the U.S. Department of Labor. The FLSA sets baseline requirements for minimum wage, overtime pay, recordkeeping, and youth employment standards for non-exempt workers.
+              </p>
+            </div>
 
-      {/* ── Tools Grid ── */}
-      <section className="w-full max-w-7xl mx-auto px-4 py-16" aria-label="Free social media tools">
-        <h2 className="font-clash text-4xl font-bold mb-3 text-center">All Free Social Media Tools</h2>
-        <p className="text-muted text-center mb-12 max-w-2xl mx-auto">
-          Every tool works instantly in your browser. No accounts, no installs, no watermarks.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tools.map(tool => (
-            <Link key={tool.href} href={tool.href} className="card-hover group block p-1 rounded-2xl bg-surface border border-border">
-              <div className="bg-surface h-full rounded-xl p-6 flex flex-col gap-4">
-                <div className="text-4xl">{tool.icon}</div>
-                <h3 className="font-clash text-xl font-semibold group-hover:text-accent transition-colors">{tool.title}</h3>
-                <p className="text-muted flex-grow text-sm">{tool.description}</p>
-                <div className="flex flex-wrap gap-2 mb-3">
-                  {tool.platforms.map(p => (
-                    <span key={p} className="text-xs font-medium px-2 py-1 rounded-md bg-surface2 text-muted">{p}</span>
-                  ))}
-                </div>
-                <span className="text-sm font-semibold text-accent group-hover:underline">{tool.cta} →</span>
+            {/* Quick Reference Table: Minutes to Decimal Hours */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                Quick-Reference: Minutes to Payroll Decimal Hours Conversion
+              </h3>
+              <p className="text-sm mb-4">
+                Because traditional clocks track time in base-60 (60 minutes per hour) while financial payroll systems operate in base-100 (decimals), minutes must be converted prior to calculating gross wages. The table below outlines the standard decimal equivalents used by ADP, Paychex, QuickBooks, and federal payroll auditors:
+              </p>
+
+              <div className="overflow-x-auto rounded-xl border border-border bg-surface2">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-surface3/50 text-white font-semibold border-b border-border text-xs uppercase tracking-wider">
+                    <tr>
+                      <th className="py-3 px-4">Minutes</th>
+                      <th className="py-3 px-4">Decimal Equivalent</th>
+                      <th className="py-3 px-4">Fraction of Hour</th>
+                      <th className="py-3 px-4">FLSA 7-Minute Rounding Interval</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border/60 text-gray-300 font-mono">
+                    <tr>
+                      <td className="py-2.5 px-4">5 mins</td>
+                      <td className="py-2.5 px-4 text-emerald-400 font-bold">0.08 hrs</td>
+                      <td className="py-2.5 px-4">1/12 hour</td>
+                      <td className="py-2.5 px-4 font-sans text-xs text-muted">Rounds to 0.00h (if between 1–7m)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2.5 px-4">15 mins</td>
+                      <td className="py-2.5 px-4 text-emerald-400 font-bold">0.25 hrs</td>
+                      <td className="py-2.5 px-4">1/4 hour</td>
+                      <td className="py-2.5 px-4 font-sans text-xs text-muted">Rounds to 0.25h (if between 8–22m)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2.5 px-4">30 mins</td>
+                      <td className="py-2.5 px-4 text-emerald-400 font-bold">0.50 hrs</td>
+                      <td className="py-2.5 px-4">1/2 hour</td>
+                      <td className="py-2.5 px-4 font-sans text-xs text-muted">Standard unpaid meal break interval</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2.5 px-4">45 mins</td>
+                      <td className="py-2.5 px-4 text-emerald-400 font-bold">0.75 hrs</td>
+                      <td className="py-2.5 px-4">3/4 hour</td>
+                      <td className="py-2.5 px-4 font-sans text-xs text-muted">Rounds to 0.75h (if between 38–52m)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2.5 px-4">60 mins</td>
+                      <td className="py-2.5 px-4 text-emerald-400 font-bold">1.00 hrs</td>
+                      <td className="py-2.5 px-4">Full hour</td>
+                      <td className="py-2.5 px-4 font-sans text-xs text-muted">Standard 60-minute shift block</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+            </div>
 
-      {/* ── How It Works ── */}
-      <section className="w-full bg-surface border-y border-border py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-clash text-4xl font-bold mb-3">How GridSnap Works</h2>
-          <p className="text-muted mb-12">Three simple steps — no account, no waiting.</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { step: '01', title: 'Pick a Tool', desc: 'Choose from bio generator, hashtag finder, image resizer, tweet counter, or YouTube thumbnail downloader.' },
-              { step: '02', title: 'Enter Your Info', desc: 'Type your keywords, topic, or upload an image. Our AI does the heavy lifting in seconds.' },
-              { step: '03', title: 'Copy & Post', desc: 'Copy your result directly to your clipboard and paste it straight into Instagram, TikTok, or wherever you post.' },
-            ].map(item => (
-              <div key={item.step} className="flex flex-col items-center gap-3">
-                <div className="w-14 h-14 rounded-full bg-gradient flex items-center justify-center text-bg font-clash font-bold text-lg">{item.step}</div>
-                <h3 className="font-clash text-xl font-semibold">{item.title}</h3>
-                <p className="text-muted text-sm">{item.desc}</p>
+            {/* Statutory Lunch Break Rules */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                Federal vs. State Meal & Lunch Break Regulations
+              </h3>
+              <p>
+                One of the most frequent sources of wage litigation is the improper deduction of lunch breaks. Under federal law (29 CFR § 785.19), <strong>bona fide meal periods</strong> are not considered work time and are not compensable if the following strict conditions are met:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-gray-300">
+                <li>
+                  <strong>Complete Relief from Duty:</strong> The employee must be completely relieved from all duties, whether active or inactive. An office worker required to eat lunch at their desk while monitoring incoming customer phone calls has not received a bona fide meal break, and all 30 or 60 minutes must be paid.
+                </li>
+                <li>
+                  <strong>Duration Threshold:</strong> Bona fide meal periods ordinarily must last at least 30 minutes. Rest periods of short duration—running from 5 minutes to about 20 minutes—are customary in industry, promote employee efficiency, and must be counted as compensable hours worked under federal law.
+                </li>
+                <li>
+                  <strong>State-Specific Mandates:</strong> While federal law does not mandate meal breaks, over 20 states enforce explicit statutory meal break requirements. For example, California Labor Code § 512 mandates a 30-minute unpaid meal period before the end of the 5th hour of work; failure to provide it triggers a statutory penalty of one additional hour of pay at the regular rate.
+                </li>
+              </ul>
+            </div>
+
+            {/* Overtime Calculations: FLSA Standards & Biweekly Rules */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                How Federal Overtime is Calculated: The 40-Hour Workweek Rule
+              </h3>
+              <p>
+                Unless exempt under the executive, administrative, professional, or outside sales exemptions, non-exempt employees covered by the FLSA must receive overtime pay for all hours worked over 40 in a workweek at a rate not less than <strong>one and one-half times (1.5x)</strong> their regular rate of pay.
+              </p>
+              <div className="bg-surface2 p-6 rounded-xl border border-border space-y-3 font-mono text-sm">
+                <div className="text-emerald-400 font-bold font-sans text-base">Mathematical Formula:</div>
+                <div>Regular Pay = Regular Hours (up to 40) × Base Hourly Wage</div>
+                <div>Overtime Pay = Overtime Hours (Hours &gt; 40) × (Base Hourly Wage × 1.5)</div>
+                <div>Total Gross Pay = Regular Pay + Overtime Pay</div>
               </div>
-            ))}
+              <p className="mt-4">
+                <strong>Worked Example:</strong> If an hourly construction employee earning $25.00/hour works 48 hours in a standard Monday-to-Sunday workweek with a 30-minute daily lunch break deducted:
+              </p>
+              <ul className="list-disc pl-6 space-y-1 text-gray-300">
+                <li>Regular Hours: 40.0 hours × $25.00/hr = $1,000.00</li>
+                <li>Overtime Hours: 8.0 hours × ($25.00 × 1.5 = $37.50/hr) = $300.00</li>
+                <li>Total Weekly Gross Earnings = $1,300.00 (prior to FICA, Medicare, federal, and state withholdings).</li>
+              </ul>
+            </div>
+
+            {/* Regional Nuances: California, Ontario, Australia */}
+            <div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                Regional Jurisdictional Variations (US, Canada, Australia)
+              </h3>
+              <p>
+                While the federal FLSA sets a 40-hour weekly threshold without daily overtime limits, regional jurisdictions enforce stricter labor codes:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose my-6">
+                <Link
+                  href="/overtime-calculator/california"
+                  className="p-4 rounded-xl bg-surface2 border border-border hover:border-emerald-500/50 transition-colors block group"
+                >
+                  <div className="text-emerald-400 font-bold text-base group-hover:underline">
+                    California Daily Overtime →
+                  </div>
+                  <p className="text-xs text-muted mt-2">
+                    Enforces 1.5x after 8 hours in a workday, 2.0x Double Time after 12 hours, and special 7th consecutive day wage multipliers.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/overtime-calculator/ontario"
+                  className="p-4 rounded-xl bg-surface2 border border-border hover:border-emerald-500/50 transition-colors block group"
+                >
+                  <div className="text-emerald-400 font-bold text-base group-hover:underline">
+                    Ontario Overtime (ESA) →
+                  </div>
+                  <p className="text-xs text-muted mt-2">
+                    Employment Standards Act sets overtime at 1.5x after 44 hours per week, with statutory averaging agreement provisions.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/overtime-calculator/australia-fair-work"
+                  className="p-4 rounded-xl bg-surface2 border border-border hover:border-emerald-500/50 transition-colors block group"
+                >
+                  <div className="text-emerald-400 font-bold text-base group-hover:underline">
+                    Australia Fair Work Awards →
+                  </div>
+                  <p className="text-xs text-muted mt-2">
+                    Governed by 38-hour workweeks, 25% statutory casual loading, escalating overtime tiers, and weekend penalty rates.
+                  </p>
+                </Link>
+              </div>
+            </div>
+
+            {/* Legal Disclaimer */}
+            <div className="p-4 rounded-xl bg-surface2/60 border border-border text-xs text-muted leading-relaxed">
+              <strong className="text-gray-200">Statutory Compliance Disclaimer: </strong>
+              This tool provides mathematical calculations based on standardized labor guidelines. It does not account for specific collective bargaining agreements (CBAs), fluctuating workweek methods (salaried non-exempt half-time), alternative workweek schedules (e.g., California 4x10 schedules approved by 2/3 secret ballot vote), or industry-specific exemptions (e.g., agriculture, interstate motor carriers). Consult a licensed labor attorney or CPA for certified payroll verification.
+            </div>
+          </article>
+
+          {/* FAQ Section */}
+          <div className="pt-8 border-t border-border">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
+              Frequently Asked Questions (FAQ)
+            </h2>
+            <FaqAccordion items={faqs} />
           </div>
         </div>
       </section>
-
-      {/* ── Platform Size Guide (Link Magnet) ── */}
-      <section className="w-full max-w-5xl mx-auto px-4 py-16" id="social-media-image-sizes">
-        <h2 className="font-clash text-4xl font-bold mb-3">Social Media Image Sizes Guide 2025</h2>
-        <p className="text-muted mb-8">
-          Use this reference table to find the correct image dimensions for every platform. Use our free{' '}
-          <Link href="/image-resizer-social" className="text-accent hover:underline">social media image resizer</Link> to resize in one click.
-        </p>
-        <div className="overflow-x-auto rounded-2xl border border-border">
-          <table className="w-full text-sm" aria-label="Social media image size guide 2025">
-            <thead className="bg-surface2">
-              <tr>
-                <th className="px-4 py-3 text-left font-semibold text-text">Platform</th>
-                <th className="px-4 py-3 text-left font-semibold text-text">Image Type</th>
-                <th className="px-4 py-3 text-left font-semibold text-accent font-fira">Dimensions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {platformSizes.map((row, i) => (
-                <tr key={i} className={`border-t border-border ${i % 2 === 0 ? 'bg-surface' : 'bg-surface/50'} hover:bg-surface2 transition-colors`}>
-                  <td className="px-4 py-3 text-text font-medium">{row.platform}</td>
-                  <td className="px-4 py-3 text-muted">{row.type}</td>
-                  <td className="px-4 py-3 font-fira text-accent3 font-medium">{row.size}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="text-xs text-muted mt-4">
-          Need to resize? Use our free <Link href="/image-resizer-social" className="text-accent hover:underline">Social Media Image Resizer</Link> — no upload required, works in your browser.
-        </p>
-      </section>
-
-      {/* ── Why GridSnap (E-E-A-T) ── */}
-      <section className="w-full bg-surface border-y border-border py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-clash text-4xl font-bold mb-10 text-center">Why Creators Choose GridSnap</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {[
-              { icon: '🔒', title: 'Private by Default', desc: 'All tools run in your browser. Your images and text never leave your device.' },
-              { icon: '⚡', title: 'Instant Results', desc: 'No loading spinners. Character counts are live, images resize instantly.' },
-              { icon: '🆓', title: 'Always Free', desc: 'No premium tiers, no paywalls, no watermarks. Every tool is 100% free forever.' },
-              { icon: '📱', title: 'Mobile-First', desc: 'Built for creators on the go. Works perfectly on every phone and tablet.' },
-            ].map(item => (
-              <div key={item.title} className="flex gap-4 p-5 bg-surface2 rounded-xl border border-border">
-                <span className="text-3xl flex-shrink-0">{item.icon}</span>
-                <div>
-                  <h3 className="font-semibold text-base mb-1">{item.title}</h3>
-                  <p className="text-muted text-sm">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
     </div>
   );
 }

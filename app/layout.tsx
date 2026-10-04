@@ -1,42 +1,50 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import './globals.css';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import CookieConsent from '../components/CookieConsent';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import CookieConsent from '@/components/CookieConsent';
 
 const BASE = 'https://gridsnap.studio';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: 'Free Social Media Tools for Creators',
-    template: '%s | GridSnap',
+    default: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
+    template: '%s | GridSnap Work Tools',
   },
-  description: 'Free tools for Instagram bios, hashtags, image resizing, character counting, and YouTube thumbnails. No signup, no watermark, and instant results.',
-  authors: [{ name: 'GridSnap', url: BASE }],
-  creator: 'GridSnap',
-  publisher: 'GridSnap',
+  description:
+    'Calculate weekly and biweekly work hours, unpaid lunch breaks, overtime, and gross hourly pay with our free, private time card calculator. Export to PDF and CSV instantly.',
+  authors: [{ name: 'GridSnap Work Tools Engineering & Editorial Board', url: `${BASE}/about` }],
+  creator: 'GridSnap Work Tools',
+  publisher: 'GridSnap Work Tools',
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
-  alternates: { canonical: BASE },
+  alternates: {
+    canonical: BASE,
+  },
   openGraph: {
-    title: 'Free Social Media Tools for Creators | GridSnap',
-    description: 'Create social media bios, find hashtags, resize images, count characters, and download YouTube thumbnails for free.',
+    title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
+    description:
+      'Private, client-side weekly and biweekly work hours, unpaid lunch breaks, and gross overtime wage calculator. Export to PDF and CSV.',
     url: BASE,
-    siteName: 'GridSnap',
-    type: 'website',
+    siteName: 'GridSnap Work Tools',
     locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Social Media Tools for Creators | GridSnap',
-    description: 'Free tools for social media bios, hashtags, image sizes, character counts, and YouTube thumbnails.',
-    creator: '@gridsnap',
-    site: '@gridsnap',
+    title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
+    description: 'Calculate work hours, overtime, and gross pay with instant PDF/CSV export.',
   },
   other: {
     'google-adsense-account': 'ca-pub-1360321193594177',
@@ -44,27 +52,37 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const siteSchemas = [
+  const globalSchemas = [
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'GridSnap',
+      name: 'GridSnap Work Tools',
       url: BASE,
-      description: 'Free social media tools for creators and marketers.',
+      description:
+        'Authoritative, client-side wage, timesheet, and overtime calculation engine for US, Canada, Australia, and New Zealand.',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${BASE}/?q={search_term_string}`,
+        'query-input': 'required name=search_term_string',
+      },
     },
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'GridSnap',
+      name: 'GridSnap Work Tools',
       url: BASE,
-      logo: `${BASE}/favicon.svg`,
-      sameAs: [],
+      logo: `${BASE}/icon.svg`,
+      email: 'support@gridsnap.studio',
+      sameAs: [
+        'https://www.dol.gov/agencies/whd/flsa',
+        'https://www.fairwork.gov.au/',
+      ],
       contactPoint: {
         '@type': 'ContactPoint',
-        contactType: 'customer service',
-        email: 'hello@gridsnap.studio',
+        contactType: 'customer support',
+        email: 'support@gridsnap.studio',
         url: `${BASE}/contact`,
-        availableLanguage: 'English',
+        availableLanguage: ['English'],
       },
     },
   ];
@@ -72,11 +90,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {siteSchemas.map((s, i) => (
-          <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }} />
+        {globalSchemas.map((schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
         ))}
       </head>
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen bg-bg text-text antialiased">
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1360321193594177"

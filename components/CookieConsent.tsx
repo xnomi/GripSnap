@@ -26,7 +26,7 @@ export default function CookieConsent() {
       <div className="text-sm text-muted">
         We use cookies to personalize content, serve targeted advertisements via Google AdSense, and analyze our traffic. 
         By clicking &quot;Accept&quot;, you consent to our use of cookies. 
-        Read our <Link href="/privacy" className="text-accent hover:underline">Privacy Policy</Link> for more details.
+        Read our <Link href="/privacy-policy" className="text-accent hover:underline">Privacy Policy</Link> for more details.
       </div>
       <div className="flex shrink-0 gap-3">
         <button 
