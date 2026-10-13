@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: 'Ontario Overtime Pay Calculator | ESA 44-Hour Threshold',
   description:
     'Calculate Ontario overtime pay in compliance with the Employment Standards Act (ESA). Accurate 1.5x pay calculations after 44 hours per workweek.',
+  keywords: [
+    'Ontario overtime calculator',
+    'Ontario ESA overtime threshold',
+    'Ontario 44 hour overtime rule',
+    'Employment Standards Act overtime Ontario',
+    'calculate Ontario overtime pay',
+    'Ontario averaging agreement calculator',
+    'Canada overtime pay calculator',
+  ],
   alternates: {
     canonical: `${BASE}/overtime-calculator/ontario`,
   },

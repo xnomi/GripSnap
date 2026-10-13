@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: 'Hours Worked Calculator | Elapsed Time & Decimal Hours Converter',
   description:
     'Calculate elapsed hours and minutes between start and end times, deduct unpaid breaks, and convert time clock minutes into payroll decimals instantly.',
+  keywords: [
+    'hours worked calculator',
+    'work hours calculator',
+    'decimal hours converter',
+    'minutes to decimal hours',
+    'elapsed time calculator',
+    'time clock calculator',
+    'FLSA 7 minute rule',
+    'calculate shift hours',
+    'free hours worked tracker',
+    'shift duration calculator',
+  ],
   alternates: {
     canonical: `${BASE}/hours-worked-calculator`,
   },

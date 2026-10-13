@@ -9,6 +9,16 @@ export const metadata: Metadata = {
   title: 'California Overtime Calculator | Daily Overtime & Double Time Rules',
   description:
     'Calculate California daily overtime and double-time wages accurately. Compliant with CA Labor Code Section 510: 1.5x after 8 hours and 2x after 12 hours.',
+  keywords: [
+    'California overtime calculator',
+    'California daily overtime calculator',
+    'California double time calculator',
+    'CA Labor Code 510',
+    '7th day overtime California',
+    'California meal break penalty pay',
+    'calculate California overtime',
+    'California hourly wage overtime calculator',
+  ],
   alternates: {
     canonical: `${BASE}/overtime-calculator/california`,
   },

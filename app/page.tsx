@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
   description:
     'Calculate your weekly and biweekly work hours, unpaid lunch breaks, overtime, and gross hourly pay with our free, private time card calculator. Export to PDF & CSV.',
+  keywords: [
+    'time card calculator',
+    'time card calculator with lunch breaks',
+    'free time card calculator',
+    'timesheet calculator',
+    'biweekly time card calculator',
+    'work hours calculator with lunch',
+    'hours worked calculator',
+    'FLSA overtime calculator',
+    'gross pay calculator',
+    'free timesheet export pdf csv',
+  ],
   alternates: {
     canonical: BASE,
   },
@@ -82,12 +94,6 @@ export default function HomePage() {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: BASE,
-          },
-          {
-            '@type': 'ListItem',
-            position: 2,
-            name: 'Time Card Calculator',
             item: BASE,
           },
         ],

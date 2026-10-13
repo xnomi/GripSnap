@@ -15,6 +15,21 @@ export const metadata: Metadata = {
   },
   description:
     'Calculate weekly and biweekly work hours, unpaid lunch breaks, overtime, and gross hourly pay with our free, private time card calculator. Export to PDF and CSV instantly.',
+  keywords: [
+    'time card calculator',
+    'time card calculator with lunch breaks',
+    'free time card calculator',
+    'timesheet calculator',
+    'hours worked calculator',
+    'biweekly time card calculator',
+    'overtime calculator',
+    'calculate work hours',
+    'decimal hours converter',
+    'FLSA overtime calculator',
+    'California daily overtime calculator',
+    'Ontario overtime calculator',
+    'Australia Fair Work calculator',
+  ],
   authors: [{ name: 'GridSnap Work Tools Engineering & Editorial Board', url: `${BASE}/about` }],
   creator: 'GridSnap Work Tools',
   publisher: 'GridSnap Work Tools',
@@ -40,11 +55,23 @@ export const metadata: Metadata = {
     siteName: 'GridSnap Work Tools',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${BASE}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'GridSnap Work Tools - Time Card & Overtime Calculator',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Time Card Calculator with Lunch Breaks | Free Hours & Pay Tracker',
     description: 'Calculate work hours, overtime, and gross pay with instant PDF/CSV export.',
+    images: [`${BASE}/og-image.jpg`],
+  },
+  verification: {
+    google: 'googled1272d8019641336.html',
   },
   other: {
     'google-adsense-account': 'ca-pub-1360321193594177',
@@ -60,11 +87,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       url: BASE,
       description:
         'Authoritative, client-side wage, timesheet, and overtime calculation engine for US, Canada, Australia, and New Zealand.',
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: `${BASE}/?q={search_term_string}`,
-        'query-input': 'required name=search_term_string',
-      },
     },
     {
       '@context': 'https://schema.org',
@@ -73,10 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       url: BASE,
       logo: `${BASE}/icon.svg`,
       email: 'support@gridsnap.studio',
-      sameAs: [
-        'https://www.dol.gov/agencies/whd/flsa',
-        'https://www.fairwork.gov.au/',
-      ],
+      publishingPrinciples: `${BASE}/about`,
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer support',
@@ -84,6 +103,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         url: `${BASE}/contact`,
         availableLanguage: ['English'],
       },
+      knowsAbout: [
+        'U.S. Fair Labor Standards Act (FLSA)',
+        'California Labor Code Section 510',
+        'Ontario Employment Standards Act (ESA)',
+        'Fair Work Act 2009 (Australia)',
+        'Payroll Mathematics & Decimal Time Tracking',
+      ],
     },
   ];
 

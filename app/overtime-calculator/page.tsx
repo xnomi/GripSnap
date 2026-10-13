@@ -9,6 +9,18 @@ export const metadata: Metadata = {
   title: 'Overtime Calculator | Multi-Tier Wage & Overtime Hub (US, CA, AU, NZ)',
   description:
     'Calculate overtime wages across Tier-1 jurisdictions. Compare US 40-hour FLSA rules, California daily & double time, Ontario ESA 44-hour threshold, and Australian Modern Awards.',
+  keywords: [
+    'overtime calculator',
+    'calculate overtime pay',
+    'time and a half calculator',
+    'double time calculator',
+    'FLSA overtime rules',
+    'California overtime calculator',
+    'Ontario overtime calculator',
+    'Australia overtime calculator',
+    'weekly overtime calculator',
+    'multi jurisdiction overtime calculator',
+  ],
   alternates: {
     canonical: `${BASE}/overtime-calculator`,
   },

@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: 'Australia Fair Work Overtime & Casual Loading Calculator',
   description:
     'Calculate Australian hourly wages under Fair Work Modern Awards. Includes 25% casual loading, Saturday/Sunday penalty rates, and daily overtime tiers.',
+  keywords: [
+    'Australia overtime calculator',
+    'Fair Work overtime calculator',
+    'casual loading calculator 25%',
+    'penalty rates calculator Australia',
+    'Modern Award wage calculator',
+    'Fair Work Ombudsman overtime rates',
+    'Australia 38 hour work week overtime',
+  ],
   alternates: {
     canonical: `${BASE}/overtime-calculator/australia-fair-work`,
   },
